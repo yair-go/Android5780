@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Android 5780</string>
+    <string name="title_activity_add_detail">AddDetailActivity</string>
+    <string name="fab_message">Welcome Android class</string>
+</resources>
