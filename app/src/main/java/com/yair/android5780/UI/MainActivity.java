@@ -1,7 +1,9 @@
-package com.yair.android5780;
+package com.yair.android5780.UI;
 
 import android.content.Intent;
 import android.os.Bundle;
+
+import com.yair.android5780.R;
 
 import androidx.appcompat.app.AppCompatActivity;
 
