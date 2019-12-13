@@ -4,4 +4,6 @@
     <string name="fab_message">Welcome Android class</string>
     <string name="parcel_list_button">Show Parcels List</string>
     <string name="call_to_support">Call Support</string>
+    <string name="get_adress_button">Find My Adress</string>
+    <string name="show_adress_button">Show my adress</string>
 </resources>

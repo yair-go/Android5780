@@ -66,6 +66,15 @@ public class AddDetailActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        Button show_Adress_button = findViewById(R.id.goto_find_adress);
+        show_Adress_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(AddDetailActivity.this,AdressActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
     }
 
