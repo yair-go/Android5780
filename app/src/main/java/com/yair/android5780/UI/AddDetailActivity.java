@@ -43,7 +43,7 @@ public class AddDetailActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Snackbar.make(view, R.string.fab_message, Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
-                DatabaseReference myRef = database.getReference("Students");
+                DatabaseReference myRef = database.getReference("recipients");
                 Task<Void> task  = addToDatabase(myRef);
             }
         });
@@ -90,6 +90,6 @@ public class AddDetailActivity extends AppCompatActivity {
     }
 
     private Task<Void> addToDatabase(DatabaseReference myRef) {
-        return myRef.setValue("No. 1");
+        return myRef.push().setValue(new Recipient("Moshe"));
     }
 }

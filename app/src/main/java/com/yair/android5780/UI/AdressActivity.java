@@ -36,6 +36,7 @@ public class AdressActivity extends AppCompatActivity {
         setContentView(R.layout.activity_adress);
 
         tv_Adress = findViewById(R.id.text_view_Adress);
+
         locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
 
         // Define a listener that responds to location updates

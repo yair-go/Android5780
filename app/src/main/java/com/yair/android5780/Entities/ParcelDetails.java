@@ -25,6 +25,7 @@ public class ParcelDetails  {
         this.parcelType = parcelType;
         this.parcelWeight = parcelWeight;
         this.location = location;
+
         this.recipient = recipient;
         this.shippingDate = new Date();
     }

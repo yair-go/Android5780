@@ -31,9 +31,7 @@ public class HistoryParcelsActivity extends AppCompatActivity {
         //setContentView(R.layout.activity_history_parcels);
         parcels = new ArrayList<ParcelDetails>();
         buildRecyclerView();
-
-
-    }
+  }
 
     private void buildRecyclerView() {
         setContentView(R.layout.activity_history_parcels);
@@ -49,8 +47,6 @@ public class HistoryParcelsActivity extends AppCompatActivity {
         DatabaseReference myRef = database.getReference("parcels");
 
         myRef.addListenerForSingleValueEvent(valueEventListener);
-
-
     }
 
         ValueEventListener valueEventListener = new ValueEventListener() {

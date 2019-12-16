@@ -11,6 +11,8 @@ public class ParcelFromFirebase {
     public String status;
     public String type;
     public String weight;
+    public Double latitude;
+    public Double longitude;
     @NonNull
     @Override
     public String toString() {
