@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.yair.android5780.Entities.ParcelDetails;
+import com.yair.android5780.Model.Utils;
 import com.yair.android5780.R;
 
 import java.util.List;
@@ -32,7 +33,7 @@ public class ParcelDetailsListAdapter extends androidx.recyclerview.widget.Recyc
     @NonNull
     @Override
     public ParcelDetailsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(baseContext).inflate(R.layout.parcel_item_view,
+        View v = LayoutInflater.from(baseContext).inflate(R.layout.parcel_cardview,
                 parent,
                 false);
 
@@ -45,6 +46,7 @@ public class ParcelDetailsListAdapter extends androidx.recyclerview.widget.Recyc
         holder.textViewStatus.setText(parcel.getParcelStatus().name());
         holder.textViewType.setText(parcel.getParcelType().name());
         holder.textViewWeight.setText(parcel.getParcelWeight().name());
+        holder.textViewAdress.setText(Utils.getPlace(baseContext, parcel.getLatitude(),parcel.getLongitude()));
         //holder.imageViewType.seti
     }
 
@@ -54,13 +56,14 @@ public class ParcelDetailsListAdapter extends androidx.recyclerview.widget.Recyc
     }
 
     public class ParcelDetailsViewHolder extends RecyclerView.ViewHolder{
-        TextView textViewStatus, textViewType, textViewWeight;
+        TextView textViewStatus, textViewType, textViewWeight,textViewAdress;
         ImageView imageViewType;
         public ParcelDetailsViewHolder(@NonNull View itemView) {
             super(itemView);
             textViewStatus = itemView.findViewById(R.id.text_view_status);
            // imageViewType = itemView.findViewById(R.id.image_view_type);
             textViewWeight = itemView.findViewById(R.id.text_view_weight);
+            textViewAdress = itemView.findViewById(R.id.text_view_Adress);
 
             textViewType = itemView.findViewById(R.id.text_view_type);
         }

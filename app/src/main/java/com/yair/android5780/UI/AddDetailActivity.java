@@ -43,7 +43,7 @@ public class AddDetailActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Snackbar.make(view, R.string.fab_message, Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
-                DatabaseReference myRef = database.getReference("recipients");
+                DatabaseReference myRef = database.getReference("parcels");
                 Task<Void> task  = addToDatabase(myRef);
             }
         });
@@ -74,8 +74,6 @@ public class AddDetailActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
     }
 
     private void initData(int capacity) {
@@ -84,12 +82,13 @@ public class AddDetailActivity extends AppCompatActivity {
         Enums.ParcelWeight parcelWeight = Enums.ParcelWeight.under1kg;
 
         for (int i=0; i < capacity; i++ ){
-            parcels.add(new ParcelDetails(i,parcelStatus,parcelType,parcelWeight,null,new Recipient("")));
+            parcels.add(new ParcelDetails(parcelStatus,parcelType,parcelWeight,new Recipient("")));
         }
 
     }
 
     private Task<Void> addToDatabase(DatabaseReference myRef) {
-        return myRef.push().setValue(new Recipient("Moshe"));
+     //   return myRef.push().setValue(new Recipient("Moshe"));
+        return myRef.push().setValue(new ParcelDetails(Enums.ParcelStatus.inWay,Enums.ParcelType.envelope,Enums.ParcelWeight.under5Kg,new Recipient("Moshe")));
     }
 }

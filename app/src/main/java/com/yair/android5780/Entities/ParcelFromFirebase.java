@@ -8,9 +8,14 @@ import androidx.annotation.NonNull;
 public class ParcelFromFirebase {
     public int id;
     public String shippingDate;
-    public String status;
-    public String type;
-    public String weight;
+
+//    public String parcelStatus;
+//    public String parcelType;
+//    public String parcelWeight;
+
+    public Enums.ParcelStatus parcelStatus;
+    public Enums.ParcelType parcelType;
+    public Enums.ParcelWeight parcelWeight;
     public Double latitude;
     public Double longitude;
     @NonNull
