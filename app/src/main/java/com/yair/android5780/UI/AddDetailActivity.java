@@ -3,10 +3,13 @@ package com.yair.android5780.UI;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -19,6 +22,7 @@ import com.yair.android5780.R;
 
 import java.util.ArrayList;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -31,20 +35,29 @@ public class AddDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_detail);
         Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+                    setSupportActionBar(toolbar);
 
-      //  initData(10);
+                    //  initData(10);
 
-        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+                    final FirebaseDatabase database = FirebaseDatabase.getInstance();
 
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, R.string.fab_message, Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-                DatabaseReference myRef = database.getReference("parcels");
-                Task<Void> task  = addToDatabase(myRef);
+                    FloatingActionButton fab = findViewById(R.id.fab);
+                    fab.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Snackbar.make(view, R.string.fab_message, Snackbar.LENGTH_LONG)
+                                    .setAction("Action", null).show();
+                            DatabaseReference myRef = database.getReference("parcels");
+                            Task<Void> task  = addToDatabase(myRef);
+                            task.addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful())
+                         Toast.makeText(AddDetailActivity.this,"Successful",Toast.LENGTH_LONG ).show();
+                        else
+                            Toast.makeText(AddDetailActivity.this,"Successful",Toast.LENGTH_LONG ).show();
+                    }
+                });
             }
         });
 
@@ -88,7 +101,14 @@ public class AddDetailActivity extends AppCompatActivity {
     }
 
     private Task<Void> addToDatabase(DatabaseReference myRef) {
-     //   return myRef.push().setValue(new Recipient("Moshe"));
-        return myRef.push().setValue(new ParcelDetails(Enums.ParcelStatus.inWay,Enums.ParcelType.envelope,Enums.ParcelWeight.under5Kg,new Recipient("Moshe")));
+        Recipient recipient = new Recipient(1,"Moshe","+16505553434");
+        try {
+            return myRef.push().setValue(new ParcelDetails(Enums.ParcelStatus.inWay, Enums.ParcelType.envelope, Enums.ParcelWeight.under5Kg, recipient));
+        }
+        catch (Exception e)
+        {
+            Log.d("addToDatabase", "addToDatabase: " + e.getMessage());
+            return null;
+        }
     }
 }

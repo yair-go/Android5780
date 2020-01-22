@@ -8,6 +8,10 @@ public class Recipient {
     private int recipientID;
     private String recipientName;
 
+
+
+    private String PhoneNumber;
+
     public int getRecipientID() {
         return recipientID;
     }
@@ -20,6 +24,19 @@ public class Recipient {
         recipientID = s_id;
         ++s_id;
         this.recipientName = recipientName;
+    }
+    public Recipient(int recipientID, String recipientName, String phoneNumber) {
+        this.recipientID = recipientID;
+        this.recipientName = recipientName;
+        PhoneNumber = phoneNumber;
+    }
+
+    public String getPhoneNumber() {
+        return PhoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        PhoneNumber = phoneNumber;
     }
 
     public void setRecipientID(int recipientID) {

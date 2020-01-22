@@ -83,7 +83,14 @@ public class ParcelDetails  {
         return location.getLongitude();
     }
 
+    public Recipient getRecipient() {
+        return recipient;
+    }
     //endregion
+
+
+
+
 
     //region Setters
     public void setId(int id) {
@@ -104,6 +111,10 @@ public class ParcelDetails  {
 
     public void setShippingDate(Date shippingDate) {
         this.shippingDate = shippingDate;
+    }
+
+    public void setRecipient(Recipient recipient) {
+        this.recipient = recipient;
     }
     //endregion
 

@@ -47,6 +47,7 @@ public class HistoryParcelsActivity extends AppCompatActivity {
         DatabaseReference myRef = database.getReference("parcels");
 
         myRef.addListenerForSingleValueEvent(valueEventListener);
+
     }
 
         ValueEventListener valueEventListener = new ValueEventListener() {
